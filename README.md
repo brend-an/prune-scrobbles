@@ -1,5 +1,5 @@
 # prune-scrobbles
-A collection of python scripts to prune scrobbles (or listens) for submitting to ListenBrainz.
+A collection of python scripts to prune listen data from streaming audio services. Then, you can use the resulting clean data files for ubmitting to ListenBrainz.
 
 ## Why
 I had exported listening data from multiple music streaming services and wanted to remove skipped tracks from the files. Streaming services, like Spotify and YouTube Music, will keep a record of every single track played regardless of the length of time the track was played.
