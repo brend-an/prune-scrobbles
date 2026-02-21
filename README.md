@@ -24,13 +24,22 @@ Optionally, use `ytm_remove_60s_skips.py` to be more aggresive with filtering an
 ## ListenBrainz
 
 ### ListenBrainz Export Script
-- `listenbrainz_export_full_listens.py` exports all listens for a given user using the ListenBrainz API. Supports automatic resume and safe incremental writes.
+`listenbrainz_export_full_listens.py` exports all listens for a given user using the ListenBrainz API. Supports automatic resume and safe incremental writes.
 Dependencies: `pip install requests`.
+
+Usage:
+```
+    python listenbrainz_export_full_listens.py --username USER --token TOKEN
+```
+Optional:
+```
+    --output filename.json
+```
 
 Once your export is completed, and you have a complete `USER_export_full.json` JSON file, you can now audit this data and see if you have duplicates, skips or other data anomalies. This is useful if you want to clean and re-import the listening data or move your existing listening data to a new account.
 
 ###  ListenBrainz Audit Analyzer
-- `listenbrainz_audit_analyzer.py` does an analysis of the ListenBrainz user export JSON file and generates a comprehensive integrity report.
+`listenbrainz_audit_analyzer.py` does an analysis of the ListenBrainz user export JSON file and generates a comprehensive integrity report.
 
 It calculates:
 - Total listens
@@ -43,11 +52,13 @@ It calculates:
 - Rapid burst detection (listens occurring within N seconds)
 
 Usage:
+```
     python export_audit_analyzer.py export.json
-
+```
 Optional:
+```
     --near-window 10   # near duplicate window in seconds
+```
 
-<hr />
-
+---
 Note, these scripts were made with the help of ChatGPT. I don't know how to code python.
