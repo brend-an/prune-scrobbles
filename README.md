@@ -80,29 +80,15 @@ Optional:
 ### ListenBrainz Audit v2
 This script performs deep integrity analysis on a ListenBrainz export JSON.
 
-It evaluates:
+This analyzer audits a ListenBrainz export for structural integrity, temporal plausibility, metadata quality, and listening diversity.
 
-STRUCTURAL INTEGRITY
-- Total listens
-- Exact duplicates
-- Near duplicates (optional window)
-- Timestamp collisions
-
-TEMPORAL ANALYSIS
-- Rapid burst detection (≤5s, ≤10s)
-- Same-track rapid repeats
-- Minimum/median gap
-
-METADATA HEALTH
-- Recording MBID coverage
-- Duration metadata coverage
-- Submission client breakdown
-
-DIVERSITY ANALYSIS
-- Unique artists
-- Shannon entropy
-- Yearly distribution
-- Entropy by year
+It helps detect:
+- Duplicate imports
+- Re-scrobbles
+- Batch timestamp corruption
+- Rapid artificial bursts
+- Metadata sparsity
+- Unnatural distribution patterns
 
 Usage:
 ```
