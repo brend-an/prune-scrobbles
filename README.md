@@ -53,7 +53,7 @@ It calculates:
 
 Usage:
 ```
-    python export_audit_analyzer.py export.json
+    python listenbrainz_audit_analyzer.py export.json
 ```
 Optional:
 ```
