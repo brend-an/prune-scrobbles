@@ -92,8 +92,11 @@ It helps detect:
 
 Usage:
 ```
-    python listenbrainz_audit_v2.py export.json --near-window 60
+    python listenbrainz_audit_v2.py export.json
 ```
-
+Optional:
+```
+    --near-window 60   # near duplicate window in seconds
+```
 ---
 Note, these scripts were made with the help of ChatGPT. I don't know how to code python.
