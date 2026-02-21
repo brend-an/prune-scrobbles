@@ -99,7 +99,7 @@ Optional:
     --near-window 60   # near duplicate window in seconds
 ```
 
-General Limitations Across All Scripts
+## General Limitations Across All Scripts
 - No canonical track identity resolution unless MBIDs are present.
 - No cross-platform reconciliation beyond simple matching logic.
 - Timestamp comparisons assume Unix epoch accuracy.
