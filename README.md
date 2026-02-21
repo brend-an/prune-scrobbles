@@ -98,5 +98,13 @@ Optional:
 ```
     --near-window 60   # near duplicate window in seconds
 ```
+
+General Limitations Across All Scripts
+- No canonical track identity resolution unless MBIDs are present.
+- No cross-platform reconciliation beyond simple matching logic.
+- Timestamp comparisons assume Unix epoch accuracy.
+- Heuristic thresholds (5s, 10s, 60s, etc.) may need adjustment per dataset.
+- These tools assist analysis but cannot guarantee absolute historical authenticity.
+  
 ---
 Note, these scripts were made with the help of ChatGPT. I don't know how to code python.
