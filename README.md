@@ -1,5 +1,5 @@
 # prune-scrobbles
-A collection of python scripts to prune listen data from streaming audio services. Then, you can use the resulting clean data files for submitting to ListenBrainz.
+A collection of python scripts to prune listen data from streaming audio services and verify ListenBrainz data. Then, you can use the resulting clean data files for submitting (or re-submitting) to ListenBrainz.
 
 ## Why
 I had exported listening data from multiple music streaming services and wanted to remove skipped tracks from the files. Streaming services, like Spotify and YouTube Music, will keep a record of every single track played regardless of the length of time the track was played.
@@ -20,5 +20,34 @@ It's worth nothing that the ListenBrainz default import tool does this de-duplic
 Choosing 60 seconds for filtering-out an removing track listings was a much better balance and helped clean up time shifted scrobbles.
 
 Optionally, use `ytm_remove_60s_skips.py` to be more aggresive with filtering and remove any repeated listens in a 60 second window.
+
+## ListenBrainz
+
+### ListenBrainz Export Script
+- `listenbrainz_export_full_listens.py` exports all listens for a given user using the ListenBrainz API. Supports automatic resume and safe incremental writes.
+Dependencies: `pip install requests`.
+
+Once your export is completed, and you have a complete `USER_export_full.json` JSON file, you can now audit this data and see if you have duplicates, skips or other data anomalies. This is useful if you want to clean and re-import the listening data or move your existing listening data to a new account.
+
+###  ListenBrainz Audit Analyzer
+- `listenbrainz_audit_analyzer.py` does an analysis of the ListenBrainz user export JSON file and generates a comprehensive integrity report.
+
+It calculates:
+- Total listens
+- Unique track count
+- Exact duplicates
+- Top artists
+- Yearly distribution
+- Skip counts (≤5s, ≤10s, ≤15s, ≤30s, ≤60s, ≤90s)
+- Duration distribution
+- Rapid burst detection (listens occurring within N seconds)
+
+Usage:
+    python export_audit_analyzer.py export.json
+
+Optional:
+    --near-window 10   # near duplicate window in seconds
+
+<hr />
 
 Note, these scripts were made with the help of ChatGPT. I don't know how to code python.
