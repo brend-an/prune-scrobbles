@@ -19,4 +19,6 @@ It's worth nothing that the ListenBrainz default import tool does this de-duplic
 
 Choosing 60 seconds for filtering-out an removing track listings was a much better balance and helped clean up time shifted scrobbles.
 
+Optionally, use `ytm_remove_60s_skips.py` to be more aggresive with filtering and remove any repeated listens in a 60 second window.
+
 Note, these scripts were made with the help of ChatGPT. I don't know how to code python.
