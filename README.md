@@ -10,11 +10,28 @@ Tracks that were played for 10 to 15 seconds were generally tracks that I had ch
 1. `spotify-filter.py` will take the JSON files from the "Spotify Extended Streaming History" [export](https://support.spotify.com/us/article/understanding-your-data/) and remove any skipped tracks. Skipped tracks are songs played for less than 30 seconds.  You can change the time value in the python script file to reflect your needs.
 2. With the resulting JSON files you can submit the cleaned-up listens to ListenBrainz with their default tool to by going to [Import listens](https://listenbrainz.org/settings/import/).
 
+Usage:
+```
+python spotify-filter.py
+```
+
 It's worth nothing that the ListenBrainz default import tool does this de-duplication automatically. I got similar import numbers after removing skipped tracks.
 
 ## YouTube Music
 1. `ytm-filter-music-and-topic.py` will take your Google Takeout YouTube Watch History (`watch-history.html`) export and remove any video watch listings and only keep YouTube Music listens and videos with a music topic.
+
+Usage:
+```
+python ytm-filter-music-and-topic.py
+```
+
 2. `ytm_remove_30s_skips.py` will take the resulting listens, from step 1, and remove any tracks that were played for less then 30 seconds. Again, you can change the time value in the python script to reflect your needs.
+
+Usage:
+```
+python ytm_remove_30s_skips.py
+```
+
 3. Once you have the resulting HTML file you can submit the cleaned-up listens to ListenBrainz with [ytm-extractor](https://github.com/defvs/ytm-extractor). You'll need your [ListenBrainz API Key - User Token](https://listenbrainz.readthedocs.io/en/latest/users/api/index.html).
 
 Choosing 60 seconds for filtering-out an removing track listings was a much better balance and helped clean up time shifted scrobbles.
@@ -58,6 +75,38 @@ Usage:
 Optional:
 ```
     --near-window 10   # near duplicate window in seconds
+```
+
+### ListenBrainz Audit v2
+This script performs deep integrity analysis on a ListenBrainz export JSON.
+
+It evaluates:
+
+STRUCTURAL INTEGRITY
+- Total listens
+- Exact duplicates
+- Near duplicates (optional window)
+- Timestamp collisions
+
+TEMPORAL ANALYSIS
+- Rapid burst detection (≤5s, ≤10s)
+- Same-track rapid repeats
+- Minimum/median gap
+
+METADATA HEALTH
+- Recording MBID coverage
+- Duration metadata coverage
+- Submission client breakdown
+
+DIVERSITY ANALYSIS
+- Unique artists
+- Shannon entropy
+- Yearly distribution
+- Entropy by year
+
+Usage:
+```
+    python listenbrainz_audit_v2.py export.json --near-window 60
 ```
 
 ---
